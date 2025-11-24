@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home/home_screen.dart';
-import 'transaction_screen.dart';
-import 'transaction_history.dart';
+import 'add_transaction/transaction_screen.dart';
+import 'transaction_history/transaction_history.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});

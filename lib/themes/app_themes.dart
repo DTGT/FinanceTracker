@@ -51,8 +51,6 @@ class AppTheme{
       onPrimary: Colors.white,
       secondary: Color(0xFF8E24AA),     // Purple accent
       onSecondary: Colors.white,
-      background: Color(0xFFF2F2F2),
-      onBackground: Colors.black,
       surface: Colors.white,
       onSurface: Colors.black,
       error: Color(0xFFB00020),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/screens/login_screen.dart';
+import 'package:financial_tracker/views/login/login_screen.dart';
 
 class AppHeader extends StatelessWidget {
   final Widget child;
@@ -73,10 +73,11 @@ class AppHeader extends StatelessWidget {
             title: const Text("Sign out"),
             onTap: () async {
               await FirebaseAuth.instance.signOut();
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-                (route) => false,
+              if (!context.mounted) return; // check widget still exists
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => LoginScreen()),
+                  (route) => false,
               );
             },
           ),
