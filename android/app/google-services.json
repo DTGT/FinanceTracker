@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "705693358132",
+    "project_id": "financialtrackerdb-7cbe3",
+    "storage_bucket": "financialtrackerdb-7cbe3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705693358132:android:fa84563243d09322ddd261",
+        "android_client_info": {
+          "package_name": "com.example.financial_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705693358132-bhadaujp8lnjje3d75b0gsfveilc0en2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.financial_tracker",
+            "certificate_hash": "22d08746066e69b852361b111190faf882c19225"
+          }
+        },
+        {
+          "client_id": "705693358132-gamr5kqgglqgsi08ig1tqfk2ovrmlci0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEUgbPBg6Pkd_SA75ElNA7hjxJCgXWnDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705693358132-gamr5kqgglqgsi08ig1tqfk2ovrmlci0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "705693358132-k2l989ajdt3nqdn9cn8a5k3i5rg5snbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.financialTracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
