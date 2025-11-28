@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:financial_tracker/views/login/login_screen.dart';
+import 'package:financial_tracker/app/views/login/login_screen.dart';
 import 'package:financial_tracker/themes/app_themes.dart';
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:financial_tracker/viewmodels/authenticaton.dart';
-import 'package:financial_tracker/services/auth_service.dart';
+import 'package:financial_tracker/app/viewmodels/authenticaton.dart';
+import 'package:financial_tracker/app/services/auth_service.dart';
 import '../main_navigation.dart';
 
 class LoginScreen extends StatelessWidget {

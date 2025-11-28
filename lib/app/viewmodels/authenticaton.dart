@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:financial_tracker/services/auth_service.dart';
+import 'package:financial_tracker/app/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 

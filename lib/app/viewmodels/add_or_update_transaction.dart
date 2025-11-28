@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/models/transactions.dart';
+import 'package:financial_tracker/app/models/transactions.dart';
+import 'package:financial_tracker/app/services/transactions_service.dart';
 
-class AddTransactionViewModel extends ChangeNotifier {
+class AddOrUpdateTransactionViewModel extends ChangeNotifier {
+  //
+  final TransactionService _transactionService = TransactionService();
+
   // Form fields
   DateTime selectedDate = DateTime.now();
   String? type;
@@ -15,23 +18,73 @@ class AddTransactionViewModel extends ChangeNotifier {
   String? fundDestination;
   double? fee;
   String? notes;
-  String? txnId;
+  String? txnId; // if null → new transaction, else → updating
 
   // Loading state
   bool isLoading = false;
 
   // Category options
   final List<String> types = ['Income', 'Expense', 'Transfer'];
-  final List<String> mainCategories = ['Food', 'Travel', 'Salary', 'Others'];
+  final List<String> mainCategories = [
+    'Wants',
+    'Needs',
+    'Family',
+    'Money Transfer',
+    'Salary',
+    'Refunds',
+  ];
   final Map<String, List<String>> subCategories = {
-    'Food': ['Groceries', 'Dining', 'Snacks'],
-    'Travel': ['Taxi', 'Flight', 'Hotel'],
-    'Salary': ['Monthly', 'Bonus'],
-    'Others': ['Misc']
+    'Needs': [
+      'Food',
+      'Supermarket',
+      'Bills/Utilities',
+      'Personal Care',
+      'Emergency/Miscellaneous',
+      'Transportation',
+    ],
+    'Wants': [
+      'Dining Out',
+      'Entertainment',
+      'Shopping',
+      'Hobbies',
+      'Travel',
+      'Subscriptions',
+      'Gifts & Donations',
+      'Games',
+    ],
+    'Family': ['Parents', 'Siblings', 'Relatives'],
+    'Salary': ['Salary'],
+    'Money Transfer': ['Transfer'],
+    'Refunds': ['Refund/Rebate'],
   };
-  final List<String> fundSources = ['Bank', 'Wallet', 'Cash'];
-  final List<String> fundDestinations = ['Bank', 'Wallet', 'Cash'];
+  final List<String> fundSources = ['LandBank', 'GCash', 'Cash on Hand'];
+  final List<String> fundDestinations = ['LandBank', 'GCash', 'Cash on Hand'];
 
+  // Messages
+  String? message;
+  bool isSuccess = true;
+
+  // --------------------------
+  // Prefill from existing transaction
+  // --------------------------
+  void prefillFromTransaction(TransactionModel txn) {
+    txnId = txn.id;
+    selectedDate = txn.date;
+    type = txn.type;
+    mainCategory = txn.mainCategory;
+    subCategory = txn.subCategory;
+    description = txn.description;
+    amount = txn.amount;
+    fundSource = txn.fundSource;
+    fundDestination = txn.fundDestination;
+    fee = txn.fee;
+    notes = txn.notes;
+    notifyListeners();
+  }
+
+  // --------------------------
+  // Helpers for form setters
+  // --------------------------
   void pickDate(DateTime date) {
     selectedDate = date;
     notifyListeners();
@@ -89,9 +142,14 @@ class AddTransactionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
- String? message;
-  bool isSuccess = true;
+  void clearMessage() {
+    message = null;
+    notifyListeners();
+  }
 
+  // --------------------------
+  // Create/Update transaction
+  // --------------------------
   Future<void> submitTransaction() async {
     isLoading = true;
     notifyListeners();
@@ -116,12 +174,16 @@ class AddTransactionViewModel extends ChangeNotifier {
         userEmail: userEmail!,
       );
 
-      await FirebaseFirestore.instance
-          .collection('Transactions')
-          .doc(id)
-          .set(txn.toMap());
+      // Firestore will create new doc if id doesn't exist, or overwrite existing
+      if (txnId == null) {
+        await _transactionService.createTransaction(txn);
+      } else {
+        await _transactionService.updateTransaction(txn);
+      }
 
-      message = 'Transaction saved successfully!';
+      message = txnId == null
+          ? 'Transaction added successfully!'
+          : 'Transaction updated successfully!';
       isSuccess = true;
     } catch (e) {
       message = 'Failed to save transaction: $e';
@@ -130,10 +192,5 @@ class AddTransactionViewModel extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
-  }
-
-  void clearMessage() {
-    message = null;
-    notifyListeners();
   }
 }

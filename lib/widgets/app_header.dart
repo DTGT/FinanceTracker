@@ -1,6 +1,7 @@
+import 'package:financial_tracker/app/views/user_settings/user_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/views/login/login_screen.dart';
+import 'package:financial_tracker/app/views/login/login_screen.dart';
 
 class AppHeader extends StatelessWidget {
   final Widget child;
@@ -69,6 +70,20 @@ class AppHeader extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text("Settings"),
+            onTap: () {
+              Navigator.pop(context); // close bottom sheet
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
+
+          const Divider(),
+
+          ListTile( // sign out
             leading: const Icon(Icons.logout),
             title: const Text("Sign out"),
             onTap: () async {
@@ -81,6 +96,7 @@ class AppHeader extends StatelessWidget {
               );
             },
           ),
+          
         ],
       ),
     );
