@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/app/models/transactions.dart';
+import 'package:financial_tracker/app/models/transactions_model.dart';
 import 'package:financial_tracker/app/services/transactions_service.dart';
 
 class AddOrUpdateTransactionViewModel extends ChangeNotifier {

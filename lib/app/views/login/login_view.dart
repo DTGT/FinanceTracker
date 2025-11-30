@@ -1,8 +1,9 @@
+import 'package:financial_tracker/app/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:financial_tracker/app/viewmodels/authenticaton.dart';
+import 'package:financial_tracker/app/viewmodels/authenticaton_vm.dart';
 import 'package:financial_tracker/app/services/auth_service.dart';
-import '../main_navigation.dart';
+import '../main_navigation_view.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -10,7 +11,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => LoginViewModel(AuthService()),
+      create: (_) => LoginViewModel(AuthService(), UserService()),
       child: _LoginScreenBody(),
     );
   }

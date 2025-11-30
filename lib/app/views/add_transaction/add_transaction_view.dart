@@ -1,6 +1,6 @@
+import 'package:financial_tracker/widgets/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'package:financial_tracker/widgets/app_header.dart';
-import 'package:financial_tracker/widgets/transaction_form.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});
@@ -17,10 +17,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppHeader(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: TransactionForm(onSave: () async {}),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsetsGeometry.all(16.0),
+          child: TransactionForm(onSave: () {}),
+        ),
       ),
     );
   }

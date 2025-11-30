@@ -1,7 +1,7 @@
-import 'package:financial_tracker/app/views/user_settings/user_settings.dart';
+import 'package:financial_tracker/app/views/user_settings/user_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/app/views/login/login_screen.dart';
+import 'package:financial_tracker/app/views/login/login_view.dart';
 
 class AppHeader extends StatelessWidget {
   final Widget child;
@@ -15,9 +15,10 @@ class AppHeader extends StatelessWidget {
     // Get theme colors and text styles
     final theme = Theme.of(context);
     final primaryColor = theme.colorScheme.primary;
-    final titleStyle = theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold);
+    final titleStyle = theme.textTheme.headlineSmall?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
     final subtitleStyle = theme.textTheme.labelLarge;
-
 
     return Column(
       children: [
@@ -34,9 +35,15 @@ class AppHeader extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Financial Tracker", style: titleStyle?.copyWith(color: Colors.white)),
+                  Text(
+                    "Financial Tracker",
+                    style: titleStyle?.copyWith(color: Colors.white),
+                  ),
                   const SizedBox(height: 4),
-                  Text("Manage your finance", style: subtitleStyle?.copyWith(color: Colors.white70)),
+                  Text(
+                    "Manage your finance",
+                    style: subtitleStyle?.copyWith(color: Colors.white70),
+                  ),
                 ],
               ),
 
@@ -50,9 +57,13 @@ class AppHeader extends StatelessWidget {
                 },
                 child: CircleAvatar(
                   radius: 22,
-                  backgroundImage: user?.photoURL != null ? NetworkImage(user!.photoURL!) : null,
+                  backgroundImage: user?.photoURL != null
+                      ? NetworkImage(user!.photoURL!)
+                      : null,
                   backgroundColor: Colors.white,
-                  child: user?.photoURL == null ? const Icon(Icons.person, color: Colors.black) : null,
+                  child: user?.photoURL == null
+                      ? const Icon(Icons.person, color: Colors.black)
+                      : null,
                 ),
               ),
             ],
@@ -83,20 +94,20 @@ class AppHeader extends StatelessWidget {
 
           const Divider(),
 
-          ListTile( // sign out
+          ListTile(
+            // sign out
             leading: const Icon(Icons.logout),
             title: const Text("Sign out"),
             onTap: () async {
               await FirebaseAuth.instance.signOut();
               if (!context.mounted) return; // check widget still exists
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (_) => LoginScreen()),
-                  (route) => false,
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => LoginScreen()),
+                (route) => false,
               );
             },
           ),
-          
         ],
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:financial_tracker/app/models/transactions.dart';
+import 'package:financial_tracker/app/models/transactions_model.dart';
 
 class TransactionService {
   final _db = FirebaseFirestore.instance;

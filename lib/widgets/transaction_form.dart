@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:financial_tracker/app/viewmodels/add_or_update_transaction.dart';
-import 'package:financial_tracker/app/models/transactions.dart';
+import 'package:financial_tracker/app/viewmodels/add_or_update_transaction_vm.dart';
+import 'package:financial_tracker/app/models/transactions_model.dart';
 
 class TransactionForm extends StatefulWidget {
   final TransactionModel? transaction; // null = add, not null = edit

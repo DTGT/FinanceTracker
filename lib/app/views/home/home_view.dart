@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:financial_tracker/widgets/app_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,12 +10,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return AppHeader(
-      child: Center(
-        child: Text("Home Screen"),
-      ),
-    );
+    return Center(child: Text("Home Screen"));
   }
-
-  
 }
