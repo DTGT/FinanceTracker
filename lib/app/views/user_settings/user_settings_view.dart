@@ -1,5 +1,4 @@
 import 'package:financial_tracker/app/viewmodels/user_settings_vm.dart';
-import 'package:financial_tracker/widgets/app_header.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

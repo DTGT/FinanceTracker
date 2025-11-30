@@ -1,6 +1,5 @@
 import 'package:financial_tracker/widgets/transaction_form.dart';
 import 'package:flutter/material.dart';
-import 'package:financial_tracker/widgets/app_header.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});

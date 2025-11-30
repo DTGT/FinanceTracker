@@ -1,7 +1,6 @@
 import 'package:financial_tracker/widgets/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:financial_tracker/widgets/app_header.dart';
 import 'package:financial_tracker/app/viewmodels/transaction_history_vm.dart';
 import 'package:financial_tracker/app/models/transactions_model.dart';
 

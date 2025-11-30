@@ -1,6 +1,5 @@
 import 'package:financial_tracker/app/views/categories/categories.dart';
 import 'package:financial_tracker/widgets/app_header.dart';
-import 'package:financial_tracker/widgets/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'package:financial_tracker/app/views/home/home_view.dart';
 import 'package:financial_tracker/app/views/transaction_history/transaction_history_view.dart';
